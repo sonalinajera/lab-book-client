@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './LandingPage.css'
 
+
 export class HomePage extends Component {
+  
   render() {
     return (
       <div className='HomePage'>

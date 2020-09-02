@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import './ExperimentsPage.css'
+import ExperimentsContext from '../../contexts/ExperimentsContext'
+import LabBookService from '../../services/lab-book-api-service'
 export class ExperimentsPage extends Component {
+  static contextType = ExperimentsContext
+
+  componentDidMount() {
+    LabBookService.getExperiments()
+    .then(console.log('hey'))
+    .catch(this.context.setError)
+  }
+
   render() {
     return (
       <div>
