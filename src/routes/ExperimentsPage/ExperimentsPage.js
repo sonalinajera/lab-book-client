@@ -7,7 +7,7 @@ export class ExperimentsPage extends Component {
 
   componentDidMount() {
     LabBookService.getExperiments()
-    .then(console.log('hey'))
+    .then(experiments => console.log(experiments))
     .catch(this.context.setError)
   }
 
