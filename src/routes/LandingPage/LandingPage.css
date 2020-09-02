@@ -1,0 +1,17 @@
+* {
+  text-align: center;
+}
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: red;
+}
+
+section {
+  border: 2px black dashed;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+}
