@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../Header/Header'
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from '../../routes/LandingPage/LandingPage';
-import ExperimentsPage from '../../routes/ExperimentsPage/ExperimentsPage';
+import ExperimentsPage from '../../routes/UserHomePage/UserHomePage';
+import ExperimentPage from '../../routes/ExperimentPage/ExperimentPage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       </header>
     <main className='App_main'>
       
-      <h2>Hey girl :D </h2>
+      <h2>LabBook </h2>
       <Switch>
         <Route 
           exact
@@ -22,6 +23,11 @@ function App() {
           exact
           path={'/experiments'}
           component={ExperimentsPage}
+          />
+        <Route 
+          exact
+          path={'/experiments/:experiments_id'}
+          component={ExperimentPage}
           />
       </Switch>
 

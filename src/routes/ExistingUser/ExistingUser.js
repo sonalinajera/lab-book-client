@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ExperimentsContext from '../../contexts/ExperimentsContext'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 export class ExistingUser extends Component {
   static defaultProps = {
@@ -14,18 +16,18 @@ export class ExistingUser extends Component {
     const { experiments=[] } = this.context
 
     const experimentsArray = experiments.map(experiment => {
-  return (<section>
-  <h2>{experiment.experiment_title}</h2>
-
-  <button>Experiment Details</button>
+  return (<section key={experiment.id}>
+  <h2>
+    <Link to={`/experiments/${experiment.id}`}>
+    {experiment.experiment_title}
+    </Link>
+  </h2>
   <button>Create new observation</button>
   <button>Edit Experiment</button>
   <button>Delete Experiment</button>
-  <p> Date created: {experiment.date_created} </p>
+  <p> Date created: {moment(experiment.date_created).format("MMM Do YY")} </p>
 </section>)
     } );
-
-    console.log(experimentsArray)
     
     return (
       <div>

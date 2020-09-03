@@ -9,6 +9,10 @@ export class Header extends Component {
           <Link to='/'>
             Lab Book
           </Link>
+          <br/>
+          <Link to='/experiments'>
+            Experiments
+          </Link>
         </h1>
       </nav>
     )

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import './ExperimentsPage.css'
+import './UserHomePage.css'
 import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 import NewUser from '../NewUser/NewUser'
 import ExistingUser from '../ExistingUser/ExistingUser'
 
-export class ExperimentsPage extends Component {
+export class UserHomePage extends Component {
   
   state = {
     experiments: []
@@ -16,6 +16,7 @@ export class ExperimentsPage extends Component {
   componentDidMount() {
     LabBookService.getExperiments()
     .then(experiments => {
+      console.log(experiments)
       this.setState({ experiments: experiments })
     })
     .catch(this.context.setError)
@@ -25,11 +26,10 @@ export class ExperimentsPage extends Component {
     const value = {
       experiments: this.state.experiments
     }
-    console.log('context:', value)
 
    const newUser = this.state.experiments.length === 0 
     ? <NewUser />
-    : <ExistingUser/>
+    : <ExistingUser value={value}/>
     return (
       <ExperimentsContext.Provider value={value}>
 
@@ -52,4 +52,4 @@ export class ExperimentsPage extends Component {
   }
 }
 
-export default ExperimentsPage
+export default UserHomePage
