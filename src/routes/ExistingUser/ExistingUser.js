@@ -22,8 +22,7 @@ export class ExistingUser extends Component {
     {experiment.experiment_title}
     </Link>
   </h2>
-  <button>Create new observation</button>
-  <button>Edit Experiment</button>
+  <button >Create new observation</button>
   <button>Delete Experiment</button>
   <p> Date created: {moment(experiment.date_created).format("MMM Do YY")} </p>
 </section>)

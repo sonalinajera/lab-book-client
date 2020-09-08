@@ -4,6 +4,7 @@ import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 import NewUser from '../NewUser/NewUser'
 import ExistingUser from '../ExistingUser/ExistingUser'
+import { Link } from 'react-router-dom'
 
 export class UserHomePage extends Component {
   
@@ -27,7 +28,7 @@ export class UserHomePage extends Component {
       experiments: this.state.experiments
     }
 
-   const newUser = this.state.experiments.length === 0 
+   const user = this.state.experiments.length === 0 
     ? <NewUser />
     : <ExistingUser value={value}/>
     return (
@@ -36,13 +37,19 @@ export class UserHomePage extends Component {
       <div>
         <main>
         <section>
-            <h2>Welcome, {this.state.experiments[0] 
+            {/* <h2>Welcome, {this.state.experiments[0] 
             ? this.state.experiments[0].username
             : ''
-            }</h2>
+            }</h2> */}
+
+            <h2>Welcome, Scientist</h2>
             <p> Synopsis profile </p>
+
+            <Link to={'/newExperiment'}>
+            <button >Add new experiment</button>
+    </Link>
         </section>
-          {newUser}
+          {user}
 
     </main>
     <footer role="content-info">Footer</footer>

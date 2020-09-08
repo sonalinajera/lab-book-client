@@ -10,6 +10,10 @@ export default ExperimentsContext
 
 
 export class ExperimentsProvider extends Component {
+  state = {
+    experiments: [],
+    error: null,
+  } 
   setError = error => {
     console.error(error)
     this.setState({ error })

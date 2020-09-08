@@ -1,4 +1,5 @@
 import config from '../config'
+import newExperimentFrom from '../routes/newExperimentForm/newExperimentFrom'
 
 const LabBookService = {
   getExperiments(){
@@ -24,6 +25,20 @@ const LabBookService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+  postExperiment(newExperiment) {
+    return fetch(`${config.API_ENDPOINT}/experiments`, {
+      method: 'POST',
+      headers: {
+        'authorization': `basic `,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newExperiment)
+    })
+    .then(res => 
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json())
   }
 }
 

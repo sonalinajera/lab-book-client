@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import ExperimentsPage from '../../routes/UserHomePage/UserHomePage';
 import ExperimentPage from '../../routes/ExperimentPage/ExperimentPage';
+import NotFound from '../../routes/NotFound/NotFound'
+import newExperimentFrom from '../../routes/newExperimentForm/newExperimentFrom';
 
 function App() {
   return (
@@ -29,6 +31,15 @@ function App() {
           path={'/experiments/:experiments_id'}
           component={ExperimentPage}
           />
+        <Route 
+          exact
+          path={'/newExperiment'}
+          component={newExperimentFrom}
+        />
+        <Route
+              component={NotFound}
+            />
+  
       </Switch>
 
     </main>
