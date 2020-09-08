@@ -23,7 +23,7 @@ export class ExperimentPage extends Component {
     LabBookService.getExperimentById(this.props.match.params.experiments_id)
     .then(experiment => {
       this.setState({experiment: experiment})
-      console.log('this', experiment)
+
     })
     .catch(error => this.setState(error))
   }

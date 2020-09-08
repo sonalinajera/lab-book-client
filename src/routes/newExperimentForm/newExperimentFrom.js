@@ -52,7 +52,7 @@ export class newExperimentFrom extends Component {
           </div>
         
         
-          <button type="submit">Submit</button>
+          <button onClick={() => this.props.history.goBack()} type="submit">Submit</button>
           <button onClick={() => this.props.history.goBack()}>Cancel</button>
         </form>
       </section>

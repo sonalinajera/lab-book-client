@@ -4,6 +4,7 @@ const ExperimentsContext = React.createContext({
   experiments: [],
   error: null,
   setError: () => {},
+  deleteExperiment: () => {}
 })
 
 export default ExperimentsContext
@@ -18,11 +19,15 @@ export class ExperimentsProvider extends Component {
     console.error(error)
     this.setState({ error })
   }
+
+ 
+
   render() {
     const value ={
       experiments: this.state.experiments,
       error: this.state.error,
-      setError: this.setError
+      setError: this.setError,
+      deleteExperiment: this.deleteExperiment
     }
     return (
       <ExperimentsProvider value={value}>

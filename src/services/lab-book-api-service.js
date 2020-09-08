@@ -39,6 +39,15 @@ const LabBookService = {
       (!res.ok)
       ? res.json().then(e => Promise.reject(e))
       : res.json())
+  },
+  deleteExperiment(experimentId) {
+    return fetch(`${config.API_ENDPOINT}/experiments/${experimentId}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `basic `,
+        'content-type': 'application/json'
+      }
+    })
   }
 }
 

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 export class UserHomePage extends Component {
   
   state = {
-    experiments: []
+    experiments: [],
   }
   
   static contextType = ExperimentsContext
@@ -17,18 +17,26 @@ export class UserHomePage extends Component {
   componentDidMount() {
     LabBookService.getExperiments()
     .then(experiments => {
-      console.log(experiments)
       this.setState({ experiments: experiments })
     })
     .catch(this.context.setError)
   }
 
+  deleteExperiment = experimentId => {
+
+    this.setState({
+      experiments: this.state.experiments.filter(experiment => experiment.id !== experimentId)
+    })
+  
+  }
+
   render() {
     const value = {
-      experiments: this.state.experiments
+      experiments: this.state.experiments,
+      deleteExperiment: this.deleteExperiment
     }
-
-   const user = this.state.experiments.length === 0 
+    
+   const user = !this.state.experiments
     ? <NewUser />
     : <ExistingUser value={value}/>
     return (
