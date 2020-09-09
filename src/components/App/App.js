@@ -6,6 +6,8 @@ import ExperimentsPage from '../../routes/UserHomePage/UserHomePage';
 import ExperimentPage from '../../routes/ExperimentPage/ExperimentPage';
 import NotFound from '../../routes/NotFound/NotFound'
 import newExperimentFrom from '../../routes/newExperimentForm/newExperimentFrom';
+import ObservationPage from '../../routes/ObservationPage/ObservationPage'
+import newObservationForm from '../../routes/newObservationForm/newObservationForm';
 
 function App() {
   return (
@@ -35,6 +37,16 @@ function App() {
           exact
           path={'/newExperiment'}
           component={newExperimentFrom}
+        />
+        <Route 
+          exact
+          path={'/observations/:observation_id'}
+          component={ObservationPage}
+          />
+          <Route 
+          exact
+          path={'/newObservation'}
+          component={newObservationForm}
         />
         <Route
               component={NotFound}

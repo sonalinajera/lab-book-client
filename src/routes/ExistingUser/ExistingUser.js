@@ -39,15 +39,14 @@ export class ExistingUser extends Component {
   render() {
 
     const { experiments=[] } = this.context
-
     const experimentsArray = experiments.map(experiment => {
   return (<section key={experiment.id}>
   <h2>
-    <Link to={`/experiments/${experiment.id}`}>
+    <Link to={`/experiments/${experiment.id}`} >
     {experiment.experiment_title}
     </Link>
   </h2>
-  <button> Create new observation</button>
+  
   <button onClick={(e)=> this.handleClickDelete(e, experiment.id)}> Delete Experiment</button>
   <p> Date created: {moment(experiment.date_created).format("MMM Do YY")} </p>
 </section>)

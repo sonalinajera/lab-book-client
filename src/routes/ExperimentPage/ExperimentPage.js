@@ -3,36 +3,57 @@ import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 import moment from 'moment'
 import ObservationsList from '../ObservationsList/ObservationsList'
+import { Link } from 'react-router-dom'
 
 export class ExperimentPage extends Component {
   state = {
-    experiments: [],
-    error: null
+    experiment: [],
+    observations: [],
+    error: null,
+    deleteExperiment: () => {},
   }
   
   static defaultProps = {
     match: {
       params: {}
     },
-
+    goBack: () => { },
   }
   
   static contextType = ExperimentsContext;
 
   componentDidMount() {
-    LabBookService.getExperimentById(this.props.match.params.experiments_id)
-    .then(experiment => {
-      this.setState({experiment: experiment})
-
+    Promise.all([LabBookService.getExperimentById(this.props.match.params.experiments_id), LabBookService.getObservations(this.props.match.params.experiments_id)])
+    .then(([experiment, observations]) => {
+      this.setState({ experiment , observations})
     })
     .catch(error => this.setState(error))
+
+  }
+// TODO find a better way to do this
+  handleClickDelete = (e, id) => {
+    e.preventDefault();
+    LabBookService.deleteExperiment(id)
+    .then(res => {
+      if(!res.ok) {
+        return res.json().then(e => Promise.reject(e))
+      }
+      return res
+    })
+    .then(() => {
+      this.context.deleteExperiment(id)
+      this.props.history.goBack()
+    })
+    .catch(error => {
+      console.error({ error })
+    })
   }
 
   render() {
     const title = this.state.experiment ? this.state.experiment.experiment_title : '';
     const date = this.state.experiment ? this.state.experiment.date_created : '';
     const hypothesis = this.state.experiment ? this.state.experiment.hypothesis: '';
-
+    const variable = this.state.experiment ? this.state.experiment.hypothesis: '';
     let content
     if (this.state.error) {
       content = (this.state.error.message === `Experiment does not exist`)
@@ -40,22 +61,32 @@ export class ExperimentPage extends Component {
         : <p className='red'>There was an error</p>
     } 
     
-    const display = content ? content : (<div><h2>{title}</h2>
+    const displayExperiment = content ? content : (<div><h2>{title}</h2>
       <p> Date created: {moment(date).format("MMM Do YY")} </p>
       <p> Hypothesis: {hypothesis}</p>
-      <p> Variable(s): </p>
-       <button>Create new observation</button>
-       <button>Edit Experiment</button>
-       <button>Delete Experiment</button></div>);
-
+      <p> Variable: {variable}</p>
+      <p> Profile Summary</p>
+          <p>Total Observations: {this.state.observations.length}</p>
+      <Link to={{
+        pathname:'/newObservation',
+        experiments: this.state.experiment
+        }}>
+  <button> Create new observation</button>
+  </Link>
+       <button 
+       onClick={
+         (e)=> this.handleClickDelete(e, this.props.match.params.experiments_id)
+        }
+       > Delete Experiment</button>
+       </div>);
 
     return (
       <section>
-        {display}
+        {displayExperiment}
 
         <h2>Observations</h2>
 
-        <ObservationsList/>
+        <ObservationsList state={this.state} experimentId={this.props.match.params.experiments_id}/>
         </section>
     )
   }

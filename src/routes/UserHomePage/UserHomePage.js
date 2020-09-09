@@ -20,6 +20,7 @@ export class UserHomePage extends Component {
       this.setState({ experiments: experiments })
     })
     .catch(this.context.setError)
+
   }
 
   deleteExperiment = experimentId => {
@@ -36,7 +37,7 @@ export class UserHomePage extends Component {
       deleteExperiment: this.deleteExperiment
     }
     
-   const user = !this.state.experiments
+   const userView = !this.state.experiments
     ? <NewUser />
     : <ExistingUser value={value}/>
     return (
@@ -51,13 +52,14 @@ export class UserHomePage extends Component {
             }</h2> */}
 
             <h2>Welcome, Scientist</h2>
-            <p> Synopsis profile </p>
+            <p> Profile Summary</p>
+          <p>Total Experiments: {this.state.experiments.length}</p>
 
             <Link to={'/newExperiment'}>
             <button >Add new experiment</button>
     </Link>
         </section>
-          {user}
+          {userView}
 
     </main>
     <footer role="content-info">Footer</footer>
