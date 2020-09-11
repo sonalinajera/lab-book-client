@@ -35,6 +35,8 @@ export class ObservationPage extends Component {
     const date =  this.state.observation.date_created
     const notes = this.state.observation.observation_notes
   
+    console.log(this.state.observation.experiment_id)
+  
 
     let content
     if (this.state.error) {
@@ -46,12 +48,7 @@ export class ObservationPage extends Component {
     const displayObservation = content ? content : (<div><h2>{title}</h2>
       <p> Date created: {moment(date).format("MMM Do YY")} </p>
       <p> notes: {notes}</p>
-       <button>Edit observation</button>
-       <button 
-      //  onClick={
-      //    (e)=> this.handleClickDelete(e, this.props.match.params.observation_id)
-      //   }
-       > Delete Observation</button>
+      <button onClick={() => this.props.history.goBack()}>Back to observations</button>
        </div>);
     
     return (

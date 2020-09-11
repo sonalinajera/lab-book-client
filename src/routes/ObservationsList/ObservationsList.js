@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import LabBookService from '../../services/lab-book-api-service'
 
 export class ObservationsList extends Component {
+
+  handleClickDelete = (e, experimentId, observationId) => {
+    e.preventDefault();
+    LabBookService.deleteObservation(experimentId, observationId)
+    .then(res => {
+      if(!res.ok) {
+        return res.json().then(e => Promise.reject(e))
+      }
+      return window.location.reload()
+    })
+    .catch(error => {
+      console.error({ error })
+    })
+  }
+
   render() {
     const experimentId = this.props.state.experiment.id; 
+    const experimentTitle = this.props.state.experiment.experiment_title;
     const observationsList = this.props.state.observations.map(observation => {
       return (
         (<section key={observation.id}>
@@ -14,15 +31,19 @@ export class ObservationsList extends Component {
               pathname:`/observations/${observation.id}`, 
               experimentId: experimentId
               }}>
-            Title: {observation.observation_title}
+             {observation.observation_title}
             </Link>
           </h2>
           <p>Notes: {observation.observation_notes}</p>
           <p> Date created: {moment(observation.date_created).format("MMM Do YY")} </p>
-          <button 
-          // onClick={(e)=> this.handleClickDelete(e, observation.id)}
-          > Edit Observation</button>
-          <button onClick={(e)=> this.handleClickDelete(e, observation.id)}> Delete Observation</button>
+          {/* <Link to={{
+        pathname:`/updateObservation/${observation.id}`,
+        observation,
+        experimentTitle
+        }}>
+  <button> Edit observation</button>
+  </Link> */}
+          <button onClick={(e)=> this.handleClickDelete(e, experimentId ,observation.id)}> Delete Observation</button>
         </section>)
       )
     })

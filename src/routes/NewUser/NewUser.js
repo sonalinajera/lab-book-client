@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class NewUser extends Component {
   render() {
@@ -7,7 +8,9 @@ export class NewUser extends Component {
         <section>
             <h2>New User View</h2>
 
-            <button>Create new experiment</button>
+            <Link to={'/newExperiment'}>
+                <button >Add new experiment</button>
+              </Link>
         </section>
     )
   }

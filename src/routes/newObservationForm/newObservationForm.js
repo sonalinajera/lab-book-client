@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 
-export class newObservationForm extends Component {
+export class NewObservationForm extends Component {
   static defaultProps = {
     history: {
       goBack: () => { },
@@ -16,46 +16,47 @@ export class newObservationForm extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-   const {experimentTitle, experimentHypothesis, experimentVariable } = e.target;
-
-   const newExperiment = {
-     user_id: 1,
-     experiment_title: experimentTitle.value,
-     hypothesis: experimentHypothesis.value,
-     variable_name: experimentVariable.value
-   }
-
-   LabBookService.postExperiment(newExperiment)
-   .then(res => console.log(res))
+   const { observationTitle, observationNotes } = e.target;
+  
+   const experimentId = this.props.location.experiment ? this.props.location.experiment.id : ''
+   
+   const newObservation = {
+     observation_title: observationTitle.value,
+     observation_notes: observationNotes.value,
+     experiment_id: experimentId
+    }
+   LabBookService.postObservation(experimentId, newObservation)
+   .then(() => {
+    this.props.history.goBack()
+   })
+   .catch(error => {
+    console.log({ error })
+  })
   }
 
   render() {
-
-    console.log(this.props.location.experiments.experiment_title)
-    
+    const experimentTitle = this.props.location.experiment ? this.props.location.experiment.experiment_title : ''
+    const experimentId = this.props.location.experiment ? this.props.location.experiment : ''
+    console.log('id',experimentId)
     return (
       <main role="main">
       <header>
-    <h1>{this.props.location.experiments.experiment_title}</h1>
+    <h1>{experimentTitle}</h1>
       </header>
       <section>
-        <form id="experimentSetup">
+        <form id="observationForm" onSubmit={this.handleSubmit}>
           <div className="form-section">
 
-            {/* <label htmlFor="experiment">Choose an experiment:</label>
-          <select id="experiment" name="experimentList" form="Observation">
-         <option value="volvo">Water Salinity</option>
-          </select> */}
 
-            <label htmlFor="observation-header">Observation header: <input type="text" name="experiment-title" placeholder="Summer reading" required /></label>
+            <label htmlFor="observationTitle">Observation header: <input type="text" name="observationTitle" placeholder="Summer reading" required /></label>
           </div>
           <div className="form-section">
-            <label htmlFor="observation-notes">Observation Notes <textarea name="eobservation-notes" rows="6"   required></textarea></label>
+            <label htmlFor="observationNotes">Observation Notes <textarea name="observationNotes" rows="6"   required></textarea></label>
   
           </div>
         
           <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
+          <button onClick={() => this.props.history.goBack()}>Cancel</button>
         </form>
       </section>
     </main>
@@ -63,4 +64,4 @@ export class newObservationForm extends Component {
   }
 }
 
-export default newObservationForm
+export default NewObservationForm

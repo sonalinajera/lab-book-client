@@ -3,7 +3,7 @@ import './newExperiment.css'
 import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 
-export class newExperimentFrom extends Component {
+export class NewExperimentForm extends Component {
   static defaultProps = {
     history: {
       goBack: () => { },
@@ -20,6 +20,7 @@ export class newExperimentFrom extends Component {
    const {experimentTitle, experimentHypothesis, experimentVariable } = e.target;
 
    const newExperiment = {
+     //TODO need to make user ID dynamic
      user_id: 1,
      experiment_title: experimentTitle.value,
      hypothesis: experimentHypothesis.value,
@@ -27,7 +28,12 @@ export class newExperimentFrom extends Component {
    }
 
    LabBookService.postExperiment(newExperiment)
-   .then(res => console.log(res))
+   .then(() => 
+   this.props.history.goBack() 
+   )
+   .catch(error => {
+    console.error({ error })
+  })
   }
 
   render() {
@@ -52,7 +58,7 @@ export class newExperimentFrom extends Component {
           </div>
         
         
-          <button onClick={() => this.props.history.goBack()} type="submit">Submit</button>
+          <button type="submit">Submit</button>
           <button onClick={() => this.props.history.goBack()}>Cancel</button>
         </form>
       </section>
@@ -61,4 +67,4 @@ export class newExperimentFrom extends Component {
   }
 }
 
-export default newExperimentFrom
+export default NewExperimentForm

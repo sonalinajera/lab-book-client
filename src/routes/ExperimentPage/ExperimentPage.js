@@ -69,7 +69,7 @@ export class ExperimentPage extends Component {
           <p>Total Observations: {this.state.observations.length}</p>
       <Link to={{
         pathname:'/newObservation',
-        experiments: this.state.experiment
+        experiment: this.state.experiment
         }}>
   <button> Create new observation</button>
   </Link>

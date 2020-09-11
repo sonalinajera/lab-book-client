@@ -1,7 +1,57 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import TokenService from '../../services/token-service'
 
 export class Header extends Component {
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    },
+  }
+
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+    // TODO need to reroute to home page after logout
+    const { history } = this.props
+    const destination = ({}).from || '/'
+    history.push(destination)
+    // window.location.reload()
+  }
+
+  renderLogoutLink() {
+    return (
+      <div className='Header__logged-in'>
+        <Link
+          onClick={this.handleLogoutClick}
+          to='/'>
+          Logout
+        </Link>
+        <br/>
+          <Link to='/experiments'>
+            Experiments
+          </Link>
+      </div>
+    )
+  }
+
+  renderLoginLink() {
+    return (
+      <div className='Header__not-logged-in'>
+            <Link
+              to='/register'>
+              Register
+            </Link>
+        <br/>
+        <Link
+          to={{
+            pathname: '/login',
+            userHome: '/experiments'}}>
+          Log in
+        </Link>
+      </div>
+    )
+  }
   render() {
     return (
       <nav className='Header'>
@@ -9,11 +59,14 @@ export class Header extends Component {
           <Link to='/'>
             Lab Book
           </Link>
-          <br/>
+          {/* <br/>
           <Link to='/experiments'>
             Experiments
-          </Link>
+          </Link> */}
         </h1>
+        {TokenService.hasAuthToken()
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
       </nav>
     )
   }
