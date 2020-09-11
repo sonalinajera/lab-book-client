@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
+import './Header.css'
 
 export class Header extends Component {
-  
-  state={
+
+  state = {
     logoutClicked: null
   }
-  
+
   static defaultProps = {
     location: {},
     history: {
-      push: () => {},
+      push: () => { },
     },
   }
 
@@ -20,7 +21,6 @@ export class Header extends Component {
     this.setState({
       logoutClicked: true
     })
-    // TODO need to reroute to home page after logout
     const { history } = this.props
     const destination = ({}).from || '/'
     history.push(destination)
@@ -34,9 +34,9 @@ export class Header extends Component {
           to='/'>
           Logout
         </Link>
-        <br/>
-          <Link to='/experiments'>
-            Experiments
+        <br />
+        <Link to='/experiments'>
+          Experiments
           </Link>
       </div>
     )
@@ -45,15 +45,16 @@ export class Header extends Component {
   renderLoginLink() {
     return (
       <div className='Header__not-logged-in'>
-            <Link
-              to='/register'>
-              Register
+        <Link
+          to='/register'>
+          Register
             </Link>
-        <br/>
+        <br />
         <Link
           to={{
             pathname: '/login',
-            userHome: '/experiments'}}>
+            userHome: '/experiments'
+          }}>
           Log in
         </Link>
       </div>
@@ -62,18 +63,18 @@ export class Header extends Component {
   render() {
     return (
       <nav className='Header'>
-        <h1>
-          <Link to='/'>
-            Lab Book
-          </Link>
-          {/* <br/>
-          <Link to='/experiments'>
-            Experiments
-          </Link> */}
+        <h1 className='item'>
+          {TokenService.hasAuthToken()
+            ? 'LabBook' :
+            <Link to='/'>
+              Lab Book
+          </Link>}
+
         </h1>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
+      
       </nav>
     )
   }

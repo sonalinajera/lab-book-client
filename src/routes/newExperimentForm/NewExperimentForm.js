@@ -20,7 +20,7 @@ export class NewExperimentForm extends Component {
    const {experimentTitle, experimentHypothesis, experimentVariable } = e.target;
 
    const newExperiment = {
-     //TODO need to make user ID dynamic
+   
      user_id: 1,
      experiment_title: experimentTitle.value,
      hypothesis: experimentHypothesis.value,

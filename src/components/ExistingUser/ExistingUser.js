@@ -59,37 +59,10 @@ export class ExistingUser extends Component {
         <p>Total Experiments: {experiments.length}</p>
 
         <Link to={'/newExperiment'}>
-                <button >Add new experiment</button>
-              </Link>
+          <button >Add new experiment</button>
+        </Link>
 
         {experimentsArray}
-        {/* <section>
-            <h2>Returning User Condense View</h2>
-
-            <button>Water salinity</button>
-            <p> Date created: DD/MM/YYYY / Date updated: DD/MM/YYYY </p>
-        </section>
-        <section>
-            <h2>Returning User Expanded View - no observations</h2>
-            <h3> Water salinity </h3>
-             <p> Date created: DD/MM/YYYY / Date updated: DD/MM/YYYY </p>
-             <p> Experiment details: Hypothesis, variables</p>
-              <button>Create new observation</button>
-              <button>Edit Experiment</button>
-              <button>Delete Experiment</button>
-        </section>
-
-
-        <section>
-            <h2>Returning User Expanded View</h2>
-            <h3> Water salinity </h3>
-             <p> Date created: DD/MM/YYYY / Date updated: DD/MM/YYYY </p>
-             <p> Experiment details: Hypotheis, variables</p>
-              <button>View Observations: 3 </button>
-              <button>Create new observation</button>
-              <button>Edit Experiment</button>
-              <button>Delete Experiment</button>
-        </section> */}
       </div>
     )
   }

@@ -44,10 +44,7 @@ export class UserHomePage extends Component {
 
         <div>
           <main>
-            <section>
-            </section>
             {userView}
-
           </main>
           <footer>Footer</footer>
         </div>
