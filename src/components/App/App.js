@@ -13,6 +13,7 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 // import UpdateObservation from '../../routes/UpdateObservation/UpdateObservation'
 
 function App() {
+  
   return (
     <div className='App'>
       <header className='App_header'>

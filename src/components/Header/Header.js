@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
 
 export class Header extends Component {
+  
+  state={
+    logoutClicked: null
+  }
+  
   static defaultProps = {
     location: {},
     history: {
@@ -12,11 +17,13 @@ export class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    this.setState({
+      logoutClicked: true
+    })
     // TODO need to reroute to home page after logout
     const { history } = this.props
     const destination = ({}).from || '/'
     history.push(destination)
-    // window.location.reload()
   }
 
   renderLogoutLink() {

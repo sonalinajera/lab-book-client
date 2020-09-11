@@ -4,8 +4,6 @@ import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
 import NewUser from '../NewUser/NewUser'
 import ExistingUser from '../ExistingUser/ExistingUser'
-import { Link } from 'react-router-dom'
-import { isMoment } from 'moment'
 
 import TokenService from '../../services/token-service'
 
@@ -21,7 +19,6 @@ export class UserHomePage extends Component {
     LabBookService.getExperiments()
       .then(experiments => {
         this.setState({ experiments: experiments })
-        console.log(this.state)
       })
       .catch(this.context.setError)
   }
@@ -35,9 +32,7 @@ export class UserHomePage extends Component {
   }
 
   render() {
-
-    console.log(TokenService.getAuthToken())
-
+    
     const value = {
       experiments: this.state.experiments,
       deleteExperiment: this.deleteExperiment
