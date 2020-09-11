@@ -36,8 +36,6 @@ export class NewObservationForm extends Component {
 
   render() {
     const experimentTitle = this.props.location.experiment ? this.props.location.experiment.experiment_title : ''
-    const experimentId = this.props.location.experiment ? this.props.location.experiment : ''
-    console.log('id',experimentId)
     return (
       <main role="main">
       <header>

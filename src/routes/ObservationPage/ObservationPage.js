@@ -35,8 +35,6 @@ export class ObservationPage extends Component {
     const date =  this.state.observation.date_created
     const notes = this.state.observation.observation_notes
   
-    console.log(this.state.observation.experiment_id)
-  
 
     let content
     if (this.state.error) {
