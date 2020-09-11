@@ -21,7 +21,6 @@ export class ObservationsList extends Component {
 
   render() {
     const experimentId = this.props.state.experiment.id; 
-    const experimentTitle = this.props.state.experiment.experiment_title;
     const observationsList = this.props.state.observations.map(observation => {
       return (
         (<section key={observation.id}>

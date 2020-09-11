@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header'
 import { Switch, Route } from 'react-router-dom';
 import LandingPage from '../../routes/LandingPage/LandingPage';
-import ExperimentsPage from '../LoginForm/UserHomePage/UserHomePage';
+import ExperimentsPage from '../UserHomePage/UserHomePage';
 import ExperimentPage from '../../routes/ExperimentPage/ExperimentPage';
 import NotFound from '../../routes/NotFound/NotFound'
 import ObservationPage from '../../routes/ObservationPage/ObservationPage'

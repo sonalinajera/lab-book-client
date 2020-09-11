@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './UserHomePage.css'
-import ExperimentsContext from '../../../contexts/ExperimentsContext'
-import LabBookService from '../../../services/lab-book-api-service'
-import NewUser from '../../NewUser/NewUser'
-import ExistingUser from '../../ExistingUser/ExistingUser'
+import ExperimentsContext from '../../contexts/ExperimentsContext'
+import LabBookService from '../../services/lab-book-api-service'
+import NewUser from '../NewUser/NewUser'
+import ExistingUser from '../ExistingUser/ExistingUser'
 
 export class UserHomePage extends Component {
 
