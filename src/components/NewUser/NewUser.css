@@ -1,0 +1,13 @@
+.NewUserWelcome {
+  width: 90%;
+  border-radius: 15px;
+  height: 100%;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: hsl(31, 100%, 48%, .4);
+}
+
+.NewUserWelcome>p {
+  text-align: center;
+}

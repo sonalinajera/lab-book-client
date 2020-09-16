@@ -14,7 +14,45 @@ This client-side app was made using the React library with JavaScript, CSS 3 and
 
 ## Mobile Screenshots
 
+### Landing Page
+
 ![Landing Page](AppViews/LandingPage.png)
+
+### Registration Page
+
+![Registration Page](AppViews/RegistrationPage.png)
+
+### Login Page
+
+![Login Page](AppViews/LoginPage.png)
+
+### Login Validation Error
+
+![Login Validation Error View](AppViews/LoginValidationError.png)
+
+### New User View
+
+![New User View](AppViews/NewUserView.png)
+
+### Returning/Existing User View
+
+![Returning/Existing User View](AppViews/ExistingUserView.png)
+
+### New Experiment Page
+
+![New Experiment Page](AppViews/NewExperiment.png)
+
+### Experiment with Observations
+
+![Experiment with Observations](AppViews/ExperimentandObservations.png)
+
+### New Observation Page
+
+![New Observation Page](AppViews/NewObservation.png)
+
+### Observation Page
+
+![Observation Page](AppViews/ObservationPage.png)
 
 ## Available Scripts
 
