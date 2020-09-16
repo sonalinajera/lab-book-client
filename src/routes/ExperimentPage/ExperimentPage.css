@@ -5,5 +5,16 @@
   padding: 10px;
   margin: auto;
   margin-bottom: 20px;
-  background-color: rgba(140, 26, 0, 0.351);
+}
+
+p {
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+
+.experimentDetails {
+  margin-bottom: 40px;
+  border: 5px double #003049;
+  padding-bottom: 20px;
 }

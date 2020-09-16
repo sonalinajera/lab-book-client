@@ -1,9 +1,9 @@
 .observationList {
   width: 90%;
-  border-radius: 15px;
+  border-radius: 5px;
   height: 100%;
   padding: 10px;
   margin: auto;
   margin-bottom: 20px;
-  background-color: rgba(140, 26, 0, 0.351);
+  background-color: hsl(40, 97%, 64%, .4);
 }

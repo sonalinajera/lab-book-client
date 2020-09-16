@@ -51,10 +51,12 @@ export class ExperimentPage extends Component {
   }
 
   render() {
+
     const title = this.state.experiment ? this.state.experiment.experiment_title : '';
     const date = this.state.experiment ? this.state.experiment.date_created : '';
     const hypothesis = this.state.experiment ? this.state.experiment.hypothesis : '';
-    const variable = this.state.experiment ? this.state.experiment.hypothesis : '';
+    const variable = this.state.experiment ? this.state.experiment.variable_name : '';
+    const observationHeader = this.state.observations.length === 0 ? '' : <h2>Observations</h2>
     let content
     if (this.state.error) {
       content = (this.state.error.message === `Experiment does not exist`)
@@ -62,7 +64,7 @@ export class ExperimentPage extends Component {
         : <p className='red'>There was an error</p>
     }
 
-    const displayExperiment = content ? content : (<div><h2>{title}</h2>
+    const displayExperiment = content ? content : (<div className='experimentDetails'><h2>{title}</h2>
       <p> Date created: {moment(date).format("MMM Do YY")} </p>
       <p> Hypothesis: {hypothesis}</p>
       <p> Variable: {variable}</p>
@@ -72,20 +74,16 @@ export class ExperimentPage extends Component {
         pathname: '/newObservation',
         experiment: this.state.experiment
       }}>
-        <button> Create new observation</button>
+        <button> New observation</button>
       </Link>
-      <button
-        onClick={
-          (e) => this.handleClickDelete(e, this.props.match.params.experiments_id)
-        }
-      > Delete Experiment</button>
+  
     </div>);
 
     return (
       <section className='experimentList'>
         {displayExperiment}
 
-        <h2>Observations</h2>
+        {observationHeader}
 
         <ObservationsList state={this.state} experimentId={this.props.match.params.experiments_id} />
       </section>

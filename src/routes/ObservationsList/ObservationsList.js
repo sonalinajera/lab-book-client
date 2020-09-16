@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import LabBookService from '../../services/lab-book-api-service'
+import './ObservationsList.css'
 
 export class ObservationsList extends Component {
 
@@ -23,7 +24,9 @@ export class ObservationsList extends Component {
     const experimentId = this.props.state.experiment.id; 
     const observationsList = this.props.state.observations.map(observation => {
       return (
-        (<section key={observation.id}>
+        (<section 
+        className='observationList'
+        key={observation.id}>
 
           <h2>
             <Link to={{ 
@@ -35,13 +38,7 @@ export class ObservationsList extends Component {
           </h2>
           <p>Notes: {observation.observation_notes}</p>
           <p> Date created: {moment(observation.date_created).format("MMM Do YY")} </p>
-          {/* <Link to={{
-        pathname:`/updateObservation/${observation.id}`,
-        observation,
-        experimentTitle
-        }}>
-  <button> Edit observation</button>
-  </Link> */}
+      
           <button onClick={(e)=> this.handleClickDelete(e, experimentId ,observation.id)}> Delete Observation</button>
         </section>)
       )

@@ -8,9 +8,9 @@ export class HomePage extends Component {
     return (
       <div className='HomePage'>
         <main role="main">
-          <section className='tanSection' role="banner">
+          <section className='tanSection mainBanner' role="banner">
             <h1>Lab Book</h1>
-            <p>Field research tracked easier</p>
+            <p>Field research tracked easier!</p>
           </section>
 
           <section className='blueSection'>
@@ -35,11 +35,11 @@ export class HomePage extends Component {
             <h2>Demo</h2>
             <p> Still interested in exploring the app more in depth? Use our demo credentials before you sign up:
         </p>
-            <p>Username: dplanter
-          Password:</p>
+            <p>Username: dplanter</p>
+            <p>Password: StrongStuff!@</p>
           </section>
         </main>
-        <footer>Footer</footer>
+    
       </div>
     )
   }

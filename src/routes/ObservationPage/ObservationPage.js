@@ -45,8 +45,8 @@ export class ObservationPage extends Component {
     } 
 
     const displayObservation = content ? content : (<div><h2>{title}</h2>
+      <p> Notes: {notes}</p>
       <p> Date created: {moment(date).format("MMM Do YY")} </p>
-      <p> notes: {notes}</p>
       <button onClick={() => this.props.history.goBack()}>Back to observations</button>
        </div>);
     

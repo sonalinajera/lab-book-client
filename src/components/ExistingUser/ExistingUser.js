@@ -38,10 +38,10 @@ export class ExistingUser extends Component {
 
 
   render() {
-
     const { experiments = [] } = this.context
+    const username = experiments ? this.context.experiments[0].user.username : '';
     const experimentsArray = experiments.map(experiment => {
-      return (<section key={experiment.id}>
+      return (<section className='experimentCard' key={experiment.id}>
         <h2>
           <Link to={`/experiments/${experiment.id}`} >
             {experiment.experiment_title}
@@ -54,16 +54,18 @@ export class ExistingUser extends Component {
     });
 
     return (
-      <div className='userWelcome'>
-        <h2>Welcome, Scientist</h2>
-        <p> Profile Summary</p>
+      <div className='existingUser'>
+        <section className='userWelcome'>
+        <h2>Welcome back, {username}!</h2>
         <p>Total Experiments: {experiments.length}</p>
-
         <Link to={'/newExperiment'}>
           <button >Add new experiment</button>
         </Link>
-
+        </section>
+      <section className='experimentList'>
+        <h2>Experiments</h2>
         {experimentsArray}
+      </section>
       </div>
     )
   }

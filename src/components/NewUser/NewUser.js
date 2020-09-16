@@ -6,7 +6,9 @@ export class NewUser extends Component {
     
     return (
         <section>
-            <h2>New User View</h2>
+            <h2>Welcome, Scientist!</h2>
+
+            <p>Start a new experiment by clicking below</p>
 
             <Link to={'/newExperiment'}>
                 <button >Add new experiment</button>

@@ -46,7 +46,6 @@ export class UserHomePage extends Component {
           <main>
             {userView}
           </main>
-          <footer>Footer</footer>
         </div>
       </ExperimentsContext.Provider>
     )

@@ -50,7 +50,6 @@ export class LoginForm extends Component {
             name='username'
             id='LoginForm__username'
             type='text'>
-            
           </input>
         </div>
         <div className='password'>
