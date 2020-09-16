@@ -46,14 +46,14 @@ export class NewExperimentForm extends Component {
       <section>
         <form id="experimentSetup" onSubmit={this.handleSubmit}>
           <div className="form-section">
-            <label htmlFor="experimentTitle">Experiment title: <input type="text" name="experimentTitle" placeholder="Plant death" required /></label>
+            <label htmlFor="experimentTitle">Experiment title: <input type="text" id="experimentTitle" name="experimentTitle" placeholder="Plant death" required /></label>
             
           </div>
           <div className="form-section">
-            <label htmlFor="experimentHypothesis">Experiment hypothesis: <textarea name="experimentHypothesis" rows="6"   required></textarea></label>
+            <label htmlFor="experimentHypothesis">Experiment hypothesis: <textarea id="experimentHypothesis" name="experimentHypothesis" rows="6"   required></textarea></label>
           </div>
            <div className="form-section">
-            <label htmlFor="experimentVariable">Experiment variable: <input type="text" name="experimentVariable" placeholder="No water" required /></label>
+            <label htmlFor="experimentVariable">Experiment variable: <input type="text" id="experimentVariable" name="experimentVariable" placeholder="No water" required /></label>
   
           </div>
         

@@ -46,10 +46,10 @@ export class NewObservationForm extends Component {
           <div className="form-section">
 
 
-            <label htmlFor="observationTitle">Observation header: <input type="text" name="observationTitle" placeholder="Summer reading" required /></label>
+            <label htmlFor="observationTitle">Observation header: <input type="text" id="observationTitle" name="observationTitle" placeholder="Summer reading" required /></label>
           </div>
           <div className="form-section">
-            <label htmlFor="observationNotes">Observation Notes <textarea name="observationNotes" rows="6"   required></textarea></label>
+            <label htmlFor="observationNotes">Observation Notes <textarea id="observationNotes" name="observationNotes" rows="6"   required></textarea></label>
   
           </div>
         
