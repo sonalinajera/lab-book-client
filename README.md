@@ -1,6 +1,6 @@
 # Lab Book App
 
-Open [live app](http://localhost:3000) to view it in the browser.
+Open [live app](https://lab-book.vercel.app/) to view it in the browser.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -12,6 +12,9 @@ The form layout is based on the scientific method. Users will use the app to sig
 ## Technology Stack
 This client-side app was made using the React library with JavaScript, CSS 3 and HTML 5. 
 
+## Mobile Screenshots
+
+![Landing Page](AppViews/LandingPage.png)
 
 ## Available Scripts
 
