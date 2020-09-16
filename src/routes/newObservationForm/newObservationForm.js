@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ExperimentsContext from '../../contexts/ExperimentsContext'
 import LabBookService from '../../services/lab-book-api-service'
+import './NewObservation.css'
 
 export class NewObservationForm extends Component {
   static defaultProps = {
@@ -12,6 +13,9 @@ export class NewObservationForm extends Component {
       }
     },
   }
+
+  state = { error: null } 
+
   static contextType = ExperimentsContext;
   
   handleSubmit = (e) => {
@@ -29,12 +33,13 @@ export class NewObservationForm extends Component {
    .then(() => {
     this.props.history.goBack()
    })
-   .catch(error => {
-    console.log({ error })
+   .catch(e => {
+   this.setState({ error: e.error.message })
   })
   }
 
   render() {
+    const { error } = this.state
     const experimentTitle = this.props.location.experiment ? this.props.location.experiment.experiment_title : ''
     return (
       <main role="main">
@@ -43,9 +48,10 @@ export class NewObservationForm extends Component {
       </header>
       <section>
         <form id="observationForm" onSubmit={this.handleSubmit}>
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
+        </div>
           <div className="form-section">
-
-
             <label htmlFor="observationTitle">Observation header: <input type="text" id="observationTitle" name="observationTitle" placeholder="Summer reading" required /></label>
           </div>
           <div className="form-section">

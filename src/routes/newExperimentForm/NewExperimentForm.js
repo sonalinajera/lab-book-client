@@ -13,6 +13,9 @@ export class NewExperimentForm extends Component {
       }
     },
   }
+
+  state = { error: null } 
+
   static contextType = ExperimentsContext;
   
   handleSubmit = (e) => {
@@ -31,13 +34,13 @@ export class NewExperimentForm extends Component {
    .then(() => 
    this.props.history.goBack() 
    )
-   .catch(error => {
-    console.error({ error })
+   .catch(e => {
+    this.setState({ error: e.error.message })
   })
   }
 
   render() {
-    
+    const { error } = this.state
     return (
       <main role="main">
   <header>
@@ -45,9 +48,11 @@ export class NewExperimentForm extends Component {
       </header>
       <section>
         <form id="experimentSetup" onSubmit={this.handleSubmit}>
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
+        </div>
           <div className="form-section">
             <label htmlFor="experimentTitle">Experiment title: <input type="text" id="experimentTitle" name="experimentTitle" placeholder="Plant death" required /></label>
-            
           </div>
           <div className="form-section">
             <label htmlFor="experimentHypothesis">Experiment hypothesis: <textarea id="experimentHypothesis" name="experimentHypothesis" rows="6"   required></textarea></label>

@@ -5,3 +5,7 @@ form {
 form>div, form>button {
   margin-bottom: 10px;
 }
+
+.red {
+  color: red
+}
