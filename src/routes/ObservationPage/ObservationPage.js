@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LabBookService from '../../services/lab-book-api-service'
 import moment from 'moment'
+import './ObservationPage.css'
 
 // const ObservationPage = (props) =>  {
 //   console.log('about', props.location.experimentId)
@@ -50,7 +51,7 @@ export class ObservationPage extends Component {
        </div>);
     
     return (
-      <div>
+      <div className='observationList'>
         {displayObservation}
       </div>
     )

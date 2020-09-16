@@ -4,6 +4,7 @@ import LabBookService from '../../services/lab-book-api-service'
 import moment from 'moment'
 import ObservationsList from '../ObservationsList/ObservationsList'
 import { Link } from 'react-router-dom'
+import './ExperimentPage.css'
 
 export class ExperimentPage extends Component {
   state = {
@@ -81,7 +82,7 @@ export class ExperimentPage extends Component {
     </div>);
 
     return (
-      <section>
+      <section className='experimentList'>
         {displayExperiment}
 
         <h2>Observations</h2>

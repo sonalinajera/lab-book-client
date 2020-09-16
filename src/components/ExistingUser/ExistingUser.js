@@ -3,6 +3,7 @@ import ExperimentsContext from '../../contexts/ExperimentsContext'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import LabBookService from '../../services/lab-book-api-service'
+import './ExistingUser.css'
 
 export class ExistingUser extends Component {
 
@@ -53,7 +54,7 @@ export class ExistingUser extends Component {
     });
 
     return (
-      <div>
+      <div className='userWelcome'>
         <h2>Welcome, Scientist</h2>
         <p> Profile Summary</p>
         <p>Total Experiments: {experiments.length}</p>

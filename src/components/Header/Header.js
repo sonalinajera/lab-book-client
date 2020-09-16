@@ -46,7 +46,8 @@ export class Header extends Component {
     return (
       <div className='Header__not-logged-in'>
         <Link
-          to='/register'>
+          to='/register'
+          className='register'>
           Register
             </Link>
         <br />
@@ -54,7 +55,8 @@ export class Header extends Component {
           to={{
             pathname: '/login',
             userHome: '/experiments'
-          }}>
+          }}
+          className='logStatus'>
           Log in
         </Link>
       </div>
@@ -62,18 +64,20 @@ export class Header extends Component {
   }
   render() {
     return (
-      <nav className='Header'>
-        <h1 className='item'>
+      <nav>
+        <h1 className='header'>
           {TokenService.hasAuthToken()
             ? 'LabBook' :
-            <Link to='/'>
+            <Link to='/' className='hompageLink'>
               Lab Book
           </Link>}
 
         </h1>
+        <section className='register_logIn'>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
+        </section>
       
       </nav>
     )
