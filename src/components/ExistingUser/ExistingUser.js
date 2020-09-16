@@ -42,11 +42,11 @@ export class ExistingUser extends Component {
     const username = experiments ? this.context.experiments[0].user.username : '';
     const experimentsArray = experiments.map(experiment => {
       return (<section className='experimentCard' key={experiment.id}>
-        <h2>
+        <h3>
           <Link to={`/experiments/${experiment.id}`} >
             {experiment.experiment_title}
           </Link>
-        </h2>
+        </h3>
 
         <button onClick={(e) => this.handleClickDelete(e, experiment.id)}> Delete Experiment</button>
         <p> Date created: {moment(experiment.date_created).format("MMM Do YY")} </p>
