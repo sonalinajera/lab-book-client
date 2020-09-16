@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthApiService from '../../services/auth-api-service'
+import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -67,7 +68,7 @@ export default class RegistrationForm extends Component {
         </div>
         <div className='email'>
           <label htmlFor='RegistrationForm__email'>
-            Email
+            User Email
           </label>
           <input
             name='email'

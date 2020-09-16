@@ -10,15 +10,17 @@
 }
 
 .blueSection {
-  border-radius: 50%;
+  border-radius: 30%;
+  padding: 40px 0;
   height: 100%;
   width: 90%;
   margin: auto;
   margin-bottom: 20px;
-  background-color: hsl(210, 78%, 56%, .3);
+  background-color: #378fe64d;
 }
 .tanSection {
-  border-radius: 50%;
+  border-radius: 30%;
+  padding: 20px 0;
   height: 100%;
   width: 90%;
   margin: auto;
