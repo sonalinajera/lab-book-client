@@ -41,7 +41,7 @@ export class HomePage extends Component {
         </main>
     
       </div>
-    
+    )
   }
 }
 
