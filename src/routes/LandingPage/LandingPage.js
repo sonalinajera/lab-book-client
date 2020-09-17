@@ -35,13 +35,13 @@ export class HomePage extends Component {
             <h2>Demo</h2>
             <p> Still interested in exploring the app more in depth? Use our demo credentials before you sign up:
         </p>
-            <p>Username: dplanter</p>
-            <p>Password: StrongStuff!@</p>
+            <p>Username: dPlanter</p>
+            <p>Password: strongStuff1@</p>
           </section>
         </main>
     
       </div>
-    )
+    
   }
 }
 
